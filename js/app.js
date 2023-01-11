@@ -37,6 +37,26 @@
 */
 
 
+// set the Menu item class to active to be highlighted 
+
+	const setActiveMenu = (element) => {
+
+		const links = document.querySelectorAll("#navbar__list a");
+				
+		for(const link of links){
+
+			if(element !== link.textContent){
+				
+				link.classList.remove("activeItem");
+					
+				} else {
+
+					link.classList.add("activeItem");
+
+				}
+			};
+
+	}
 
 /**
  * End Helper Functions
@@ -80,7 +100,15 @@
 
 			if(sectionHeight >= top && sectionHeight <= bottom){
 				
-				section.classList.add("your-active-class")
+				section.classList.add("your-active-class");
+
+
+				// here invoked the function to highlight menuItems:
+
+				const sectionsData = section.getAttribute("data-nav");
+				
+				setActiveMenu(sectionsData);
+
 
 			} else {
 			
@@ -100,7 +128,6 @@
 
 		if(event.target.nodeName === 'A'){
 
-				
 				const sectionName = event.target.textContent;	
 
 				const targetSection =  document.querySelector(`[data-nav = "${sectionName}"]`);
