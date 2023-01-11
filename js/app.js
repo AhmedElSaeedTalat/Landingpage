@@ -54,7 +54,7 @@
 
 			const listElement = document.createElement("li");
 		
-			listElement.innerHTML += `<a href= #${section.getAttribute('id')} class= 'menu__link'> ${section.getAttribute('data-nav')} </a>`;
+			listElement.innerHTML += `<a class= 'menu__link'>${section.getAttribute('data-nav')}</a>`;
 		
 			fragment.appendChild(listElement);
 	
@@ -99,10 +99,13 @@
 		event.preventDefault();
 
 		if(event.target.nodeName === 'A'){
+
 				
-				const targetSection =  document.querySelector(event.target.attributes.href.value);
+				const sectionName = event.target.textContent;	
+
+				const targetSection =  document.querySelector(`[data-nav = "${sectionName}"]`);
 		
-				targetSection.scrollIntoView({behavior:"smooth"});	
+				targetSection.scrollIntoView({behavior:"smooth"});
 
 		}
 		
