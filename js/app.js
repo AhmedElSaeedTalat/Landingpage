@@ -48,6 +48,7 @@
 			if(element !== link.textContent){
 				
 				link.classList.remove("activeItem");
+
 					
 				} else {
 
